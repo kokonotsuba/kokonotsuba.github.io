@@ -12,5 +12,7 @@ body {
 
 .barctl {float: right;}
 
+a {text-decoration: none;}
 a:link, a:visited {color: #ff0000;}
+a:hover {text-decoration: underline;}
 a:active {color: #00FFFF;}
