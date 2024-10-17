@@ -1,0 +1,11 @@
+body {
+ background-color: #a0fe9e;
+ font-family: Arial;
+}
+
+.subBanner {
+ text-indent: 10px; background-color: #ffc0cb;
+ font-weight: bold;
+ border-left: 2px solid #ffb2c0;
+ border-bottom: 1px solid #ffb2c0;
+}
