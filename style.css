@@ -10,7 +10,7 @@ body {
  border-bottom: 1px solid #ffb2c0;
 }
 
-.barctl {float: right;}
+.barctl {float: right; padding-right: 8px;}
 
 a {text-decoration: none;}
 a:link, a:visited {color: #ff0000;}
