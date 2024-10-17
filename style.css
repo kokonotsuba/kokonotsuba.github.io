@@ -9,3 +9,8 @@ body {
  border-left: 2px solid #ffb2c0;
  border-bottom: 1px solid #ffb2c0;
 }
+
+.barctl {float: right;}
+
+a:link, a:visited {color: #ff0000;}
+a:active {color: #00FFFF;}
