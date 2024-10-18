@@ -1,18 +1,17 @@
 body {
- background-color: #a0fe9e;
+ background-color:#eeeeee
+ color: #800000;
  font-family: Arial;
 }
 
 .subBanner {
- text-indent: 10px; background-color: #ffc0cb;
+ text-indent: 10px;
  font-weight: bold;
- border-left: 2px solid #ffb2c0;
- border-bottom: 1px solid #ffb2c0;
+ border-left: 2px solid #eeaa88;
+ border-bottom: 1px solid #eeaa88;
 }
 
 .barctl {float: right; padding-right: 8px;}
 
-a {text-decoration: none;}
-a:link, a:visited {color: #ff0000;}
-a:hover {text-decoration: underline;}
-a:active {color: #00FFFF;}
+a:link {color:#800000;}
+a:hover {color:#ffffff; background-color:#ffcc99; position:relative;}
