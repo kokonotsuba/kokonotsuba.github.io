@@ -1,4 +1,8 @@
+html{font-size:22px;}
+
 body {
+ -webkit-text-size-adjust:100%;
+ margin:0px auto;
  background-color: #eeeeee;
  color: #800000;
  font-family: Arial;
