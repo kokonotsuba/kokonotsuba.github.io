@@ -1,55 +1,144 @@
-html {font-size:20px;}
+/************ Global ************/
+html,
+body {
+  height: 100%;
+}
 
 body {
- -webkit-text-size-adjust:100%;
- margin:0px auto;
- background-color: #eeeeee;
- color: #800000;
- font-family: Arial;
+  margin: 0;
+  font-family: system-ui, 'Segoe UI', Calibri, Tahoma, Arial, sans-serif;
+  font-size: 12pt;
 }
 
-.subBanner {
- text-indent: 10px;
- font-weight: bold;
- border-left: 5px solid #eeaa88;
- border-bottom: 2px solid #eeaa88;
+.centerText {
+  text-align: center;
 }
 
-.barctl {float: right; padding-right: 8px;}
+/************ Sidebar ************/
 
-a:link {color:#800000;}
-a:hover {color:#ffffff; background-color:#ffcc99; position:relative;}
-
-h1,h2           {font-size:125%; display:inline;}
-h3,h4           {font-size:110%; display:inline;}
-h5,h6           {font-size:100%; display:inline;}
-
-img             {max-width:100%; height:auto;}
-
-/* Base=================================================================== */
-.base{
-  width:980px;
-  margin-left:auto; margin-right:auto;
-  border:0px;
-  background-color:#ffffee;
+#nav {
+  background-color: #d9d0c7;
+  color: #000000;
 }
 
-/* Link Select============================================================ */
-.navigation{
+#sideNav {
+  padding: 0.5em;
+}
+
+#sideNav h1 {
+  margin: 0;
+}
+
+#sideNav h2 {
+  margin-bottom: 0;
+  font-size: 1.125em;
+}
+
+#sideNav ul {
+  margin-top: 0.5em;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+#sideNav li {
+  margin-bottom: 0.5em;
+}
+
+/************ Main ************/
+
+#main {
+  display: flex;
+  flex-direction: column;
+  background-color: #eeeeee;
+  color: #800043;
+  max-width: 1024px;
+}
+
+#main header,
+#main main {
+  padding: 0.5em;
+}
+
+/************ Main - header ************/
+
+#main header {
   background-color: #eeaa88;
 }
 
-.navlink{
-  position: relative;
+#titleArea {
+  margin-bottom: 0.5em;
 }
 
-/* Main=================================================================== */
-.main{
-  width:100%;
+#main header h1 {
+  display: inline;
+  color: #ffffff;
+  margin: 0;
 }
 
-/* General Settings======================================================= */
-.center {
-  text-align:center;
-  margin-left:auto; margin-right:auto;
+.subtitle {
+  display: inline-block;
+  font-size: 1.25em;
+}
+
+.wings::before,
+.wings::after {
+  content: "～";
+}
+
+/************ Main - header - nav ************/
+
+#mainNav ul {
+  display: flex;
+  gap: 0.25em;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+#mainNav .navlink {
+  display: inline-block;
+  background-color: #eeaa88;
+  background-image: linear-gradient(rgb(255, 238, 204), rgb(255, 204, 170));
+  box-shadow: rgb(255, 255, 238) 1px 1px 0px inset;
+  padding: 0.25em;
+  border-radius: 0.25em;
+  text-decoration: none;
+}
+
+#mainNav .navlink:hover {
+  color: #ffffff !important;
+}
+
+/************ Main - main ************/
+
+#main main {
+  flex-grow: 1;
+  background-color: #ffffee;
+}
+
+#main h2 {
+  border-style: solid;
+  border-color: #eeaa88;
+  border-top: none;
+  border-right: none;
+  border-left-width: 1.4em;
+  border-bottom-width: 0.125em;
+  padding-left: 0.25em;
+}
+
+#welcome {
+  border: none;
+  border-left: 1.4em solid;
+  margin-top: 0;
+}
+
+.randomImage {
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;
+}
+
+main p {
+  margin: 1em 0.5em;
 }
