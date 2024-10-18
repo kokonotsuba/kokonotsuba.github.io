@@ -129,7 +129,7 @@ body {
 
 #main h2#welcome {
   border: none !important;
-  border-left: 1.4em solid;
+  border-left: 1.4em solid !important;
   margin-top: 0;
 }
 
