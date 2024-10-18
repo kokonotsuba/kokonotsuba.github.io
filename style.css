@@ -16,6 +16,11 @@ body {
 a:link {color:#800000;}
 a:hover {color:#ffffff; background-color:#ffcc99; position:relative;}
 
+h1,h2           {font-size:125%; display:inline;}
+h3,h4           {font-size:110%; display:inline;}
+h5,h6           {font-size:100%; display:inline;}
+
+img             {max-width:100%; height:auto;}
 
 /* Base (waku00)========================================================== */
 .waku00{
@@ -25,7 +30,57 @@ a:hover {color:#ffffff; background-color:#ffcc99; position:relative;}
   background-color:#ffffee;
 }
 
-/* Select (waku02)======================================================== */
+/* Head Text (waku00a)==================================================== */
+.waku00a{
+  width:100%;
+  margin-left:auto; margin-right:auto;
+  margin:0px;
+  border:0px;
+  background-color:#eeaa88;
+/*  border-collapse:collapse; */
+}
+
+/* Header Image(waku01)=================================================== */
+.waku01{
+  width:100%;
+  background-image:url(./image01/topimg01.jpg);
+  background-color: #eeaa88;
+/*  border:0px #cc9966 solid; */
+/*  border-collapse:collapse; */
+}
+
+.waku0101{                              /* ヘッダ内タイトル部分 */
+  width:100%;
+  height:100px;
+  border:0px;
+  background-color:#ffffff;
+  background-image:url(./image01/tj_tit01.jpg);
+/*  border-collapse:collapse; */
+}
+
+.waku010101{                            /* ヘッダ内タイトル部分文字 */
+  font-size:100%;
+  color:#663300;
+  font-family:fantasy;
+  padding:0px 0px 0px 10px;
+}
+
+.waku010102{
+  font-size:20pt;
+  color:#663300;
+  font-family:fantasy;
+  padding:0px 0px 0px 10px;
+}
+
+.waku010103{
+  font-size:12pt;
+  color:#663300;
+  font-family:fantasy;
+  text-align:right;
+  padding:0px 10px 5px 0px;
+}
+
+/* Link Select (waku02)=================================================== */
 .waku02{
   width:100%;
   font-size:100%;
@@ -65,3 +120,173 @@ a:hover {color:#ffffff; background-color:#ffcc99; position:relative;}
   text-decoration: none;
   outline: none;
 }
+
+/* Main (waku03)========================================================== */
+.waku03{
+  width:100%;
+}
+
+.midashi{                               /* 見出しタイトル */
+  width:85%;
+  margin-left:auto; margin-right:auto;
+  border-top:0px;
+  border-right:0px;
+  border-bottom:2px #eeaa88 solid;
+  border-left:40px #eeaa88 solid;
+  padding:5px 5px 5px 10px;
+}
+
+.waku0301{                              /* 本文 */
+  width:80%;
+  margin-left:auto; margin-right:auto;
+  border:0px;
+}
+
+.waku0301t{                             /* index頁のtable枠 */
+  width:80%;
+  margin-left:auto; margin-right:auto;
+  border:1px;
+}
+
+.waku0302{                              /* トップへ移動 */
+  width:80%;
+  margin-left:auto; margin-right:auto;
+  padding:5px 5px 5px 5px;
+  text-align:right;
+}
+
+.waku0303{                              /* 保管庫頁のtable枠 */
+  width:100%;
+/*  margin-left:auto; margin-right:auto; */
+  border:1px #eeaa88 solid;
+  background-color:#ffffff;
+  border-collapse:collapse;
+}
+
+.waku0303 th{                           /* 保管庫頁のtable枠内th */
+  border:1px #eeaa88 solid;
+  text-align:left;
+  padding:2px 0px 2px 0px;
+  background-color:#eeaa88;
+/*  background-color:#cc9966; background-image: url('data:image/gif;base64,R0lGODlhAQAeALP/AP7LZvrHZvbDZvPAZu+8Zuu4Zue1ZuSwZuCtZtypZtilZtSiZtGeZs6bZsyZZv///ywAAAAAAQAeAEAEERAc58aioaRGHRCEgShMZzoRADuNEwEAOw==');" */
+  border-collapse:collapse;
+}
+
+.waku0303 td{                           /* 保管庫頁のtable枠内td */
+  border:1px #eeaa88 solid;
+  background-color:#ffffff;
+  border-collapse:collapse;
+}
+
+.waku0304{                              /* お問い合せフォームのタイトル */
+  width:100%;
+  border:0px;
+  margin-left:auto; margin-right:auto;
+/*  border:1px #eeaa88 solid; */
+  background-color:#eeaa88;
+  border-collapse:collapse;
+}
+
+.waku0305{                              /* お問い合せフォーム */
+  width:100%;
+  border:0px;
+  margin-left:auto; margin-right:auto;
+  background-color: #f0e0d6;
+  border-collapse:collapse;
+}
+
+/* Footer (waku04)======================================================== */
+.waku04{
+  width:100%;
+  background-color: #eeaa88;
+}
+
+.waku0401{                              /* 本文 */
+  width:80%;
+  padding:5px 5px 5px 5px;
+  margin-left:auto; margin-right:auto;
+  border:0px;
+}
+
+/* General Settings======================================================= */
+.naka{
+  text-align:center;
+  margin-left:auto; margin-right:auto;
+}
+.nakam{
+  margin-left:auto; margin-right:auto;
+}
+.nakat{
+  text-align:center;
+}
+.hidari{
+  text-align:left;
+  margin-left:0px; margin-right:auto;
+}
+.hidarim{
+  margin-left:0px; margin-right:auto;
+}
+.hidarit{
+  text-align:left;
+}
+.migi{
+  text-align:right;
+  margin-left:auto; margin-right:0px;
+}
+.migim{
+  margin-left:auto; margin-right:0px;
+}
+.migit{
+  text-align:right;
+}
+.ue{
+  vertical-align:top;
+  margin-top:0px;
+}
+.shita{
+  vertical-align:bottom;
+  margin-bottom:0px;
+}
+
+.maru{                                  /* 角を丸くする */
+  -webkit-border-radius:12px;                   /* Safari用 */
+  -moz-border-radius:12px;                      /* Firefox用 */
+  border-radius:12px;                           /* CSS3 */
+}
+
+.maruue{                                /* 上の角を丸くする */
+  -webkit-border-top-left-radius:10px;          /* Safari用左上 */
+  -webkit-border-top-right-radius:10px;         /* Safari用右上 */
+  -moz-border-radius-topleft:10px;              /* Firefox用左上 */
+  -moz-border-radius-topright:10px;             /* Firefox用右上 */
+  border-top-left-radius:10px;                  /* CSS3左上 */
+  border-top-right-radius:10px;                 /* CSS3右上 */
+}
+
+.marushita{                             /* 下の角を丸くする */
+  -webkit-border-bottom-left-radius:10px;       /* Safari用左下 */
+  -webkit-border-bottom-right-radius:10px;      /* Safari用右下 */
+  -moz-border-radius-bottomleft:10px;           /* Firefox用左下 */
+  -moz-border-radius-bottomright:10px;          /* Firefox用右下 */
+  border-bottom-left-radius:10px;               /* CSS3左下 */
+  border-bottom-right-radius:10px;              /* CSS3右下 */
+}
+
+
+
+.pad1           {padding:1px;}
+.pad3           {padding:3px;}
+.pad5           {padding:5px;}
+.pad10          {padding:10px;}
+.pad15          {padding:15px;}
+
+.table01        {border:solid 1px #cc9966; margin:0px; padding:0px;}
+.table02        {border:solid 1px #cc9966; border-collapse: collapse; padding: 4px;}
+
+.aki3           {height:3px; overflow:hidden;}
+.aki5           {height:5px; overflow:hidden;}
+.aki10          {height:10px; overflow:hidden;}
+.aki50          {height:50px; overflow:hidden;}         /* 3改行 */
+.aki100         {height:100px; overflow:hidden;}        /* 5改行 */
+
+.gra01          {background-color:#cc9966; background-image: url('data:image/gif;base64,R0lGODlhAQAeALP/AP7LZvrHZvbDZvPAZu+8Zuu4Zue1ZuSwZuCtZtypZtilZtSiZtGeZs6bZsyZZv///ywAAAAAAQAeAEAEERAc58aioaRGHRCEgShMZzoRADuNEwEAOw==');"}
