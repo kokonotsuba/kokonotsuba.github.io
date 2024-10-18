@@ -17,14 +17,14 @@
       <ul>
         <li><a class="navlink" href="main.html">Index</a></li>
         <li><a class="navlink" href="history.html">History</a></li>
-        <li><a class="navlink" href="devs.html">Developers</a></li>
         <li><a class="navlink" href="features.html">Features</a></li>
+        <li><a class="navlink" href="devs.html">Developers</a></li>
         <li><a class="navlink" href="license.html">License Terms</a></li>
         <li><a class="navlink" href="https://github.com/Heyuri/kokonotsuba/" target="_blank">Repository</a></li>
         <li><a class="navlink" href="setup.html">Set Up</a></li>
-        <li><a class="navlink" href=".upgrade.html">Upgrade</a></li>
+        <li><a class="navlink" href="upgrade.html">Upgrade</a></li>
         <li><a class="navlink" href="//img.heyuri.net/b/" target="_blank">Example Board</a></li>
-        <li><a class="navlink" href="https://cgi.heyuri.net/devchat/" target="_blank">Dev Chat</a></li>
+        <li><a class="navlink" href="//cgi.heyuri.net/devchat/" target="_blank">Dev Chat</a></li>
       </ul>
     </nav>
   </header>
@@ -45,8 +45,8 @@
     <p>OS: Confirmed to work on Debian 11 and 12. Debian 10 reached its EOL so it doesn't support PHP8.3-FPM. It should in theory work in any UNIX-based system as long as you can form the stack.</p>
     <p>PHP: It has full support for PHP8+. It currently supports PHP7.2+, but future updates won't take legacy PHP in account.</p>
     <p>Web server: Confirmed to work both on nginx and apache.</p>
-    <p>Database: MariaDB. Kokonotsuba can work with a large range of DBs, but it has <b>certain features that only work on MySQLi</b>. Use MySQLi for perfect support.</p>
-    <p>The install.php script will check these for you in the future, but kokonotsuba also needs following dependencies: gd, pdo_mysql, php_mysqli, ffmpeg, mbstring</p>
+    <p>Database: MariaDB. Kokonotsuba can technically work with a large range of DBs, but it has <b>certain features that only work on MySQLi</b>, and updates are done with only MySQLi in mind. So only MySQLi is officially supported.</p>
+    <p>The install.php script will check these for you in the future, but kokonotsuba also needs following dependencies with PHP: gd, pdo_mysql, php_mysqli, ffmpeg, mbstring</p>
   </main>
 </body>
 </html>
