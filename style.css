@@ -127,8 +127,8 @@ body {
   padding-left: 0.25em;
 }
 
-#welcome {
-  border: none;
+#main h2#welcome {
+  border: none !important;
   border-left: 1.4em solid;
   margin-top: 0;
 }
