@@ -15,3 +15,53 @@ body {
 
 a:link {color:#800000;}
 a:hover {color:#ffffff; background-color:#ffcc99; position:relative;}
+
+
+/* Base (waku00)========================================================== */
+.waku00{
+  width:980px;
+  margin-left:auto; margin-right:auto;
+  border:0px;
+  background-color:#ffffee;
+}
+
+/* Select (waku02)======================================================== */
+.waku02{
+  width:100%;
+  font-size:100%;
+  background-color: #eeaa88;
+}
+
+.btn_sel{
+  position: relative;
+  display: inline-block;
+  width: 18%;
+  margin: 1%;
+  height: 60px;
+  line-height: 64px;
+  background-color: #eeaa88;
+  background-image: -webkit-linear-gradient(top, #ffeecc, #ffccaa);
+  background-image: linear-gradient(to bottom, #ffeecc, #ffccaa);
+  box-shadow: inset 1px 1px 0 #ffffee;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+}
+
+.btn_sel2{
+  position: relative;
+  display: inline-block;
+  width: 18%;
+  margin: 1%;
+  height: 30px;
+  line-height: 34px;
+  background-color: #f0e0d6;
+  background-image: -webkit-linear-gradient(top, #f0e0d6, #e0d0c6);
+  background-image: linear-gradient(to bottom, #f0e0d6, #e0d0c6);
+  box-shadow: inset 1px 1px 0 #ffffee;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+}
