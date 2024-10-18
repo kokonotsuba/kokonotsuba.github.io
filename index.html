@@ -1,12 +1,24 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kokonotsuba!</title>
-<frameset cols="210,*" frameborder="1" border="1" bordercolor="pink">
-        <frame src="nav.html" name="navFrame" title="Navigation">
-        <frame src="main.html" name="mainFrame" title="Main Page">
-      <noframes>
-        <body>
-            <p>Your browser does not support frames. Please visit the following page directly: <a href="nav.html">Navigation</a></p>
-        </body>
-    </noframes>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kokonotsuba!</title>
+  <script type="text/javascript">
+    if ((navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('iPad') == -1) || navigator.userAgent.indexOf('iPod') > 0 || navigator.userAgent.indexOf('Android') > 0) {
+      window.location.href = './main.html';
+    }
+  </script>
+</head>
+<frameset cols="170,*" border="1"> 
+  <frame src="./nav.html" name="navFrame" title="Navigation">
+  <frame src="./main.html" name="mainFrame" title="Main Page">
+  <noframes>
+    <body>
+      <script type="text/javascript">
+        window.location.href = '/main.html';
+      </script>
+    </body>
+  </noframes>
 </frameset>
+</html>
