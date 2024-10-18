@@ -10,6 +10,14 @@ body {
   font-size: 12pt;
 }
 
+img {
+  max-width: 100%;
+}
+
+q {
+  font-style: italic;
+}  
+
 .centerText {
   text-align: center;
 }
@@ -134,7 +142,6 @@ body {
 }
 
 .randomImage {
-  max-width: 100%;
   height: auto;
   max-height: 400px;
 }
