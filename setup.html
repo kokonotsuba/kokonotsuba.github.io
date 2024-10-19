@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kokonotsuba!</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body id="main">
+  <header>
+    <div id="titleArea">
+      <h1>Kokonotsuba BBS Software</h1>
+      <div class="subtitle wings">by Heyuri</div>
+    </div>
+
+    <nav id="mainNav">
+      <ul>
+        <li><a class="navlink" href="main.html">Index</a></li>
+        <li><a class="navlink" href="history.html">History</a></li>
+        <li><a class="navlink" href="features.html">Features</a></li>
+        <li><a class="navlink" href="devs.html">Developers</a></li>
+        <li><a class="navlink" href="license.html">License Terms</a></li>
+        <li><a class="navlink" href="https://github.com/Heyuri/kokonotsuba/" target="_blank">Repository</a></li>
+        <li><a class="navlink" href="setup.html">Set Up</a></li>
+        <li><a class="navlink" href="upgrade.html">Upgrade</a></li>
+        <li><a class="navlink" href="//img.heyuri.net/b/" target="_blank">Example Board</a></li>
+        <li><a class="navlink" href="//cgi.heyuri.net/devchat/" target="_blank">Dev Chat</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2 id="welcome">Get Kokonotsuba Running</h2>
+
+    <div class="centerText">
+      <img class="randomImage" height="400" src="https://img.heyuri.net/c/randomimg2.php" alt="Random image from 2D Cute@Heyuri" title="Random image from 2D Cute@Heyuri">
+    </div>
+
+    <h2>Obtain</h2>
+    <p>Get the latest version from the Github repository. If you haven't ever used Github, this is is how you can get it as a zip:</p>
+    <div> class="centerText"<img alt="download" src="src/dlzip.png"></div>
+    <p>Unzip it on the director where your board will be at.</p>
+
+    <h2>Changing static directory</h2>
+    <p>The static directory is where certain css/image/html files used by Kokonotsuba are stored on. By default 
+    it's on boarddir/static (eg. example.net/b/static/) and you don't need to do anything if you're fine with that, 
+    but you may want to change its location or centralize it for multiple boards.</p>
+    <p>If you change its location, go to global/globalconfig.php and modify $config['STATIC_URL'] and $config['STATIC_PATH'] values</p>
+    
+    <h2>Setting up the dat/ folder</h2>
+    <p>Some sensitive information (eg. error logs) are stored on dat/ folder. You must either make the directory non web accessible, or move it to a non-web directory.</p>
+    <p>If you change its location from, go to global/board-configs/boardconfig.php and change $config['STORAGE_PATH'] to absolute server path of new dat/ folder location.</p>
+    <p>If you are using multiple boards, it's suggested to use different dat/ folders for each board.</p>
+</main>
+</body>
+</html>
