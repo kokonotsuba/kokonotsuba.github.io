@@ -39,18 +39,27 @@
     <h2>Obtain</h2>
     <p>Get the latest version from the Github repository. If you haven't ever used Github, this is how you can get it as a zip:</p>
     <img alt="download" src="src/dlzip.png">
-    <p>Unzip it on the directory where your board will be at.</p>
+    <p>Unzip it on the directory where your Kokonotsuba instance's files will be at.</p>
 
+    <h2>Configuring</h2>
+     todo: add sum instructions about basic configuration
+
+    <h2>Managing boards</h2>
+    very basic info about board management (write fuller documentation for it somewhere)
+
+    <h2>Managing accounts</h2>
+    won't require much explanation.
+    
     <h2>Changing static directory</h2>
     <p>The static directory is where certain css/image/html files used by Kokonotsuba are stored on. By default 
-    it's on boarddir/static (eg. example.net/b/static/) and you don't need to do anything if you're fine with that, 
-    but you may want to change its location or centralize it for multiple boards.</p>
-    <p>If you change its location, go to <code>global/globalconfig.php</code> and modify <code>$config['STATIC_URL']</code> and <code>$config['STATIC_PATH']</code> values</p>
+    it's stored at kokonotsuba/static (eg. example.net/kokonotsuba/static/), 
+    but you may want to change its location depending on how you want to organize your instance.</p>
+    <p>Go to <code>global/globalconfig.php</code> and modify <code>$config['STATIC_URL']</code> and <code>$config['STATIC_PATH']</code> values to match the location and URL on your server</p>
     
     <h2>Setting up the dat/ folder</h2>
     <p>Some sensitive information (eg. error logs) are stored on dat/ folder. You must either make the directory non web accessible, or move it to a non-web directory.</p>
-    <p>If you change its location from, go to <code>global/board-configs/boardconfig.php</code> and change <code>$config['STORAGE_PATH']</code> to absolute server path of new dat/ folder location.</p>
-    <p>If you are using multiple boards, it's suggested to use different dat/ folders for each board.</p>
+    <p>If you change its location from, go to <code>global/board-configs/board-*.php</code> and change <code>$config['STORAGE_PATH']</code> to absolute server path of new dat/ folder location.</p>
+    <p>If you are using multiple boards, it's recomended to use different dat/ folders for each board.</p>
 </main>
 </body>
 </html>
