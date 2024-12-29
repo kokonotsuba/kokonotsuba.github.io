@@ -41,20 +41,20 @@
     <img alt="download" src="src/dlzip.png">
     <p>Unzip it on the directory where your Kokonotsuba instance's files will be at.</p>
 
+    
     <h2>Configuring</h2>
-     todo: add sum instructions about basic configuration
+     <p>Open <code>databaseSettings.php</code> in a text editor and change <code>DATABASE_USERNAME</code> and <code>DATABASE_PASSWORD</code> to the respective username and password of your database user. The default database name that Kokonotsuba uses is <code>kokonotsuba</code> at <code>DATABASE_NAME</code>. Ensure that a database with that name exists, preferably using mariadb, before installation.</p>     
+     <p>Next, open <code>global/globalconfig.php</code>. Set <code>$config['STATIC_URL']</code> to the URL of where Kokonotsuba's static files are stored; likewise <code>$config['STATIC_PATH']</code> should be set to that absolute path of the static directory in order for certain features to work. <code>$config['WEBSITE_URL']</code> gets the URL automatically, however when running multiple boards accross different domains, you will have to set it manually to the full URL.</p>
+    <p>In Kokonotsuba, "CDN" just referes to where all boards' uploaded files are stored. Before installing, make sure to create that directory and set appropriate permissions and ownership so Kokonotsuba can read, write and delete files in it.  Change the value of <code>$config['CDN_DIR']</code> to where your CDN directory is (e.g "/var/www/website/cdn/"). As for <code>$config['CDN_URL']</code>, set its value to the corrosponding URL of the CDN directory (e.g "https://example.net/cdn/")
+    <p>After that the minimum required settings for Kokonotsuba to function should be met. However you may want to set some global board settings that apply to all boards before going live with them. Go to <code>global/globalBoardConfig.php</code> and set <code>$config['TRIPSALT']</code> to a random string of characters in order for secure tripcodes to function as expected. Most config values in this file can be changed at any time.</p>
 
+    <h2></h2>
+    
     <h2>Managing boards</h2>
     very basic info about board management (write fuller documentation for it somewhere)
 
     <h2>Managing accounts</h2>
     won't require much explanation.
-    
-    <h2>Changing static directory</h2>
-    <p>The static directory is where certain css/image/html files used by Kokonotsuba are stored on. By default 
-    it's stored at kokonotsuba/static (eg. example.net/kokonotsuba/static/), 
-    but you may want to change its location depending on how you want to organize your instance.</p>
-    <p>Go to <code>global/globalconfig.php</code> and modify <code>$config['STATIC_URL']</code> and <code>$config['STATIC_PATH']</code> values to match the location and URL on your server</p>
     
     <h2>Setting up the dat/ folder</h2>
     <p>Some sensitive information (eg. error logs) are stored on dat/ folder. You must either make the directory non web accessible, or move it to a non-web directory.</p>
