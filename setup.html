@@ -30,14 +30,14 @@
   </header>
 
   <main>
-    <h2 id="welcome">Get Kokonotsuba Running</h2>
+    <h2 id="welcome">Get Kokonotsuba running</h2>
 
     <div class="centerText">
       <img class="randomImage" height="400" src="https://img.heyuri.net/c/randomimg2.php" alt="Random image from 2D Cute@Heyuri" title="Random image from 2D Cute@Heyuri">
     </div>
 
     <h2>Obtain</h2>
-    <p>Get the latest version from the Github repository. If you haven't ever used Github, this is how you can get it as a zip:</p>
+    <p>Get the latest version from the <a href="https://github.com/Heyuri/kokonotsuba/">Kokonotsuba Github repository</a>. If you haven't ever used Github, this is how you can download the repository as a ZIP file:</p>
     <img alt="download" src="src/dlzip.png">
     <p>Unzip it on the directory where your Kokonotsuba instance's files will be at.</p>
 
@@ -48,13 +48,13 @@
     <p>In Kokonotsuba, "CDN" just referes to where all boards' uploaded files are stored. Before installing, make sure to create that directory and set appropriate permissions and ownership so Kokonotsuba can read, write and delete files in it.  Change the value of <code>$config['CDN_DIR']</code> to where your CDN directory is (e.g "/var/www/website/cdn/"). As for <code>$config['CDN_URL']</code>, set its value to the corrosponding URL of the CDN directory (e.g "https://example.net/cdn/")
     <p>After that the minimum required settings for Kokonotsuba to function should be met. However you may want to set some global board settings that apply to all boards before going live with them. Go to <code>global/globalBoardConfig.php</code> and set <code>$config['TRIPSALT']</code> to a random string of characters in order for secure tripcodes to function as expected. Most config values in this file can be changed at any time.</p>
 
-    <h2>Main Installation</h2>
+    <h2>Main installation</h2>
     <p>Open install.php in your web browser (e.g "https://example.net/kokonotsuba/install.php"). There are instructions on the page that should provide enough information to complete the installation, but there are some things to keep in mind: Board Identifier is what appears in the URL when accessing the board (e.g the "b" in "https://example.net/b/"). Second is that if you get an error at all during installation, paste the error message into a search engine and see if any of the first results give you any clues on why installation failed, or paste it into ChatGPT.</p>
    
-    <h2>Setting up the dat/ folder</h2>
-    <p>Some sensitive information (eg. error logs) are stored on dat/ folder. You must either make the directory non web accessible, or move it to a non-web directory.</p>
-    <p>If you change its location from, go to <code>global/board-configs/board-*.php</code> and change <code>$config['STORAGE_PATH']</code> to absolute server path of new dat/ folder location.</p>
-    <p>If you are using multiple boards, it's recomended to use different dat/ folders for each board.</p>
+    <h2>Setting up the dat/ directory</h2>
+    <p>Some sensitive information (eg. error logs) are stored on dat/ directory. You must either make the directory non web accessible, or move it to a non-web directory.</p>
+    <p>If you change its location from, go to <code>global/board-configs/board-*.php</code> and change <code>$config['STORAGE_PATH']</code> to absolute server path of new dat/ directory location.</p>
+    <p>If you are using multiple boards, it's recomended to use different dat/ directories for each board.</p>
 </main>
 </body>
 </html>
