@@ -45,35 +45,35 @@
     <p>Open <code>databaseSettings.php</code> in a text editor and change <code>DATABASE_USERNAME</code> and <code>DATABASE_PASSWORD</code> to the respective username and password of your database user. The default database name that Kokonotsuba uses is <code>kokonotsuba</code> at <code>DATABASE_NAME</code>. Ensure that a database with that name exists, preferably using mariadb, before installation.</p>
     <p>If you don't know to, below is a quick guide to set up a mysqli database.</p>
 
-    <p>Install php-mysql, below is for Debian based OS. This is the package that provides the mysqli extension for PHP.<p>
-    <code>sudo apt update<br>sudo apt install php-mysql</code>
+    <p>Install php-mysql, below is for Debian based OS. This is the package that provides the mysqli extension for PHP.
+    <code>sudo apt update<br>sudo apt install php-mysql</code><p>
   
-	  <p>Restart your web server:</p>
-	  <p>For Apache:</p>
-  	<code>sudo systemctl restart apache2</code>
-	  <p>For Nginx:</p>
-  	<code>sudo systemctl restart nginx</code>
+	<p>Restart your web server:
+	For Apache:<br>
+  	<code>sudo systemctl restart apache2</code><br>
+	For Nginx:<br>
+  	<code>sudo systemctl restart nginx</code></p>
     
-  	<p>Verify the installation:</p>
-	  <code>php -m | grep mysqli</code>
-    <p>This will output <code>mysqli</code> if the installation was successful.</p>
+  	<p>Verify the installation:<br>
+	  <code>php -m | grep mysqli</code><br>
+    This will output <code>mysqli</code> if the installation was successful.</p>
 
-    <p>Log in to MySQL/MariaDB:</p>
-	  <code>sudo mysql -u root -p</code>
+    <p>Log in to MySQL/MariaDB:<br>
+	  <code>sudo mysql -u root -p</code></p>
 	
-    <p>Create the user:</p>
-	  <code>CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';</code>
-	  <p>Replace <code>user</code> and <code>password</code> with your own values. These are the values you need to change on the <code>databaseSettings.php</code> file, <code>DATABASE_USERNAME</code> and <code>DATABASE_PASSWORD</code> respectively.</p>
+    <p>Create the user:<br>
+	  <code>CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';</code><br>
+	  Replace <code>user</code> and <code>password</code> with your own values. These are the values you need to change on the <code>databaseSettings.php</code> file, <code>DATABASE_USERNAME</code> and <code>DATABASE_PASSWORD</code> respectively.</p>
     
-  	<p>Inside the MySQL/MariaDB prompt, run:</p>
-	  <code>CREATE DATABASE kokonotsuba;</code>
-    <p>If you change "kokonotsuba" to something else, you need to adjust <code>DATABASE_NAME</code> on <code>databaseSettings.php</code> file as well.
+  	<p>Inside the MySQL/MariaDB prompt, run:<br>
+	  <code>CREATE DATABASE kokonotsuba;</code><br>
+	If you change "kokonotsuba" to something else, you need to adjust <code>DATABASE_NAME</code> on <code>databaseSettings.php</code> file as well.</p>
 
-  	<p>Mutatis mutandis run the following command:</p>
-	  <code>GRANT ALL PRIVILEGES ON kokonotsuba.* TO 'user'@'localhost';</code>
+  	<p>Mutatis mutandis run the following command:<br>
+	  <code>GRANT ALL PRIVILEGES ON kokonotsuba.* TO 'user'@'localhost';</code></p>
 
-  	<p>Exit the Database:</p>
-  	<code>EXIT;</code>
+  	<p>Exit the Database:<br>
+  	<code>EXIT;</code></p>
     
     <h2>Configuring</h2>
     <p>Open <code>global/globalconfig.php</code>. Set <code>$config['STATIC_URL']</code> to the URL of where Kokonotsuba's static files are stored; likewise <code>$config['STATIC_PATH']</code> should be set to that absolute path of the static directory in order for certain features to work. <code>$config['WEBSITE_URL']</code> gets the URL automatically, however when running multiple boards accross different domains, you will have to set it manually to the full URL.</p>
