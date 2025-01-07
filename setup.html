@@ -45,10 +45,10 @@
     <p>Open <code>databaseSettings.php</code> in a text editor and change <code>DATABASE_USERNAME</code> and <code>DATABASE_PASSWORD</code> to the respective username and password of your database user. The default database name that Kokonotsuba uses is <code>kokonotsuba</code> at <code>DATABASE_NAME</code>. Ensure that a database with that name exists, preferably using mariadb, before installation.</p>
     <p>If you don't know to, below is a quick guide to set up a mysqli database.</p>
 
-    <p>Install php-mysql, below is for Debian based OS. This is the package that provides the mysqli extension for PHP.
+    <p>Install php-mysql, which is the package that provides the mysqli extension for PHP. For Debian based distributions:<br>
     <code>sudo apt update<br>sudo apt install php-mysql</code><p>
   
-	<p>Restart your web server:
+	<p>Restart your web server:<br>
 	For Apache:<br>
   	<code>sudo systemctl restart apache2</code><br>
 	For Nginx:<br>
@@ -67,7 +67,7 @@
     
   	<p>Inside the MySQL/MariaDB prompt, run:<br>
 	  <code>CREATE DATABASE kokonotsuba;</code><br>
-	If you change "kokonotsuba" to something else, you need to adjust <code>DATABASE_NAME</code> on <code>databaseSettings.php</code> file as well.</p>
+	If you change <code>kokonotsuba</code> to something else, you need to adjust <code>DATABASE_NAME</code> on <code>databaseSettings.php</code> file as well.</p>
 
   	<p>Mutatis mutandis run the following command:<br>
 	  <code>GRANT ALL PRIVILEGES ON kokonotsuba.* TO 'user'@'localhost';</code></p>
