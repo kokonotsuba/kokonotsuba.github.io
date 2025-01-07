@@ -36,15 +36,47 @@
       <img class="randomImage" height="400" src="https://img.heyuri.net/c/randomimg2.php" alt="Random image from 2D Cute@Heyuri" title="Random image from 2D Cute@Heyuri">
     </div>
 
-    <h2>Obtain</h2>
+    <h2>Obtaining</h2>
     <p>Get the latest version from the <a href="https://github.com/Heyuri/kokonotsuba/">Kokonotsuba Github repository</a>. If you haven't ever used Github, this is how you can download the repository as a ZIP file:</p>
     <img alt="download" src="src/dlzip.png">
     <p>Unzip it on the directory where your Kokonotsuba instance's files will be at.</p>
 
+    <h2>Setting up the database</h2>
+    <p>Open <code>databaseSettings.php</code> in a text editor and change <code>DATABASE_USERNAME</code> and <code>DATABASE_PASSWORD</code> to the respective username and password of your database user. The default database name that Kokonotsuba uses is <code>kokonotsuba</code> at <code>DATABASE_NAME</code>. Ensure that a database with that name exists, preferably using mariadb, before installation.</p>
+    <p>If you don't know to, below is a quick guide to set up a mysqli database.</p>
+
+    <p>Install php-mysql, below is for Debian based OS. This is the package that provides the mysqli extension for PHP.<p>
+    <code>sudo apt update<br>sudo apt install php-mysql</code>
+  
+	  <p>Restart your web server:</p>
+	  <p>For Apache:</p>
+  	<code>sudo systemctl restart apache2</code>
+	  <p>For Nginx:</p>
+  	<code>sudo systemctl restart nginx</code>
+    
+  	<p>Verify the installation:</p>
+	  <code>php -m | grep mysqli</code>
+    <p>This will output <code>mysqli</code> if the installation was successful.</p>
+
+    <p>Log in to MySQL/MariaDB:</p>
+	  <code>sudo mysql -u root -p</code>
+	
+    <p>Create the user:</p>
+	  <code>CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';</code>
+	  <p>Replace <code>user</code> and <code>password</code> with your own values. These are the values you need to change on the <code>databaseSettings.php</code> file, <code>DATABASE_USERNAME</code> and <code>DATABASE_PASSWORD</code> respectively.</p>
+    
+  	<p>Inside the MySQL/MariaDB prompt, run:</p>
+	  <code>CREATE DATABASE kokonotsuba;</code>
+    <p>If you change "kokonotsuba" to something else, you need to adjust <code>DATABASE_NAME</code> on <code>databaseSettings.php</code> file as well.
+
+  	<p>Mutatis mutandis run the following command:</p>
+	  <code>GRANT ALL PRIVILEGES ON kokonotsuba.* TO 'user'@'localhost';</code>
+
+  	<p>Exit the Database:</p>
+  	<code>EXIT;</code>
     
     <h2>Configuring</h2>
-     <p>Open <code>databaseSettings.php</code> in a text editor and change <code>DATABASE_USERNAME</code> and <code>DATABASE_PASSWORD</code> to the respective username and password of your database user. The default database name that Kokonotsuba uses is <code>kokonotsuba</code> at <code>DATABASE_NAME</code>. Ensure that a database with that name exists, preferably using mariadb, before installation.</p>     
-     <p>Next, open <code>global/globalconfig.php</code>. Set <code>$config['STATIC_URL']</code> to the URL of where Kokonotsuba's static files are stored; likewise <code>$config['STATIC_PATH']</code> should be set to that absolute path of the static directory in order for certain features to work. <code>$config['WEBSITE_URL']</code> gets the URL automatically, however when running multiple boards accross different domains, you will have to set it manually to the full URL.</p>
+    <p>Open <code>global/globalconfig.php</code>. Set <code>$config['STATIC_URL']</code> to the URL of where Kokonotsuba's static files are stored; likewise <code>$config['STATIC_PATH']</code> should be set to that absolute path of the static directory in order for certain features to work. <code>$config['WEBSITE_URL']</code> gets the URL automatically, however when running multiple boards accross different domains, you will have to set it manually to the full URL.</p>
     <p>In Kokonotsuba, "CDN" just referes to where all boards' uploaded files are stored. Before installing, make sure to create that directory and set appropriate permissions and ownership so Kokonotsuba can read, write and delete files in it.  Change the value of <code>$config['CDN_DIR']</code> to where your CDN directory is (e.g "/var/www/website/cdn/"). As for <code>$config['CDN_URL']</code>, set its value to the corrosponding URL of the CDN directory (e.g "https://example.net/cdn/")
     <p>After that the minimum required settings for Kokonotsuba to function should be met. However you may want to set some global board settings that apply to all boards before going live with them. Go to <code>global/globalBoardConfig.php</code> and set <code>$config['TRIPSALT']</code> to a random string of characters in order for secure tripcodes to function as expected. Most config values in this file can be changed at any time.</p>
 
