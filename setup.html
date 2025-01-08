@@ -62,15 +62,15 @@
 	  <code>sudo mysql -u root -p</code></p>
 	
     <p>Create the user:<br>
-	  <code>CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';</code><br>
-	  Replace <code>user</code> and <code>password</code> with your own values. These are the values you need to change on the <code>databaseSettings.php</code> file, <code>DATABASE_USERNAME</code> and <code>DATABASE_PASSWORD</code> respectively.</p>
+	  <code>CREATE USER '<b>user</b>'@'localhost' IDENTIFIED BY '<b>password</b>';</code><br>
+	  Replace <code><b>user</b></code> and <code><b>password</b></code> with your own values. These are the values you need to change on the <code>databaseSettings.php</code> file, <code>DATABASE_USERNAME</code> and <code>DATABASE_PASSWORD</code> respectively.</p>
     
   	<p>Inside the MySQL/MariaDB prompt, run:<br>
-	  <code>CREATE DATABASE kokonotsuba;</code><br>
-	If you change <code>kokonotsuba</code> to something else, you need to adjust <code>DATABASE_NAME</code> on <code>databaseSettings.php</code> file as well.</p>
+	  <code>CREATE DATABASE <b>kokonotsuba</b>;</code><br>
+	If you change <code><b>kokonotsuba</b></code> to something else, you need to adjust <code>DATABASE_NAME</code> on <code>databaseSettings.php</code> file as well.</p>
 
   	<p>Mutatis mutandis run the following command:<br>
-	  <code>GRANT ALL PRIVILEGES ON kokonotsuba.* TO 'user'@'localhost';</code></p>
+	  <code>GRANT ALL PRIVILEGES ON <b>kokonotsuba</b>.* TO '<b>user</b>'@'localhost';</code></p>
 
   	<p>Exit the Database:<br>
   	<code>EXIT;</code></p>
