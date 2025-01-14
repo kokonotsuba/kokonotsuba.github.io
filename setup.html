@@ -77,7 +77,6 @@
     
     <h2>Configuring</h2>
     <p>Open <code>global/globalconfig.php</code>. Set <code>$config['STATIC_URL']</code> to the URL of where Kokonotsuba's static files are stored; likewise <code>$config['STATIC_PATH']</code> should be set to that absolute path of the static directory in order for certain features to work. <code>$config['WEBSITE_URL']</code> gets the URL automatically, however when running multiple boards accross different domains, you will have to set it manually to the full URL.</p>
-    <p>In Kokonotsuba, "CDN" just referes to where all boards' uploaded files are stored. Before installing, make sure to create that directory and set appropriate permissions and ownership so Kokonotsuba can read, write and delete files in it.  Change the value of <code>$config['CDN_DIR']</code> to where your CDN directory is (e.g "/var/www/website/cdn/"). As for <code>$config['CDN_URL']</code>, set its value to the corrosponding URL of the CDN directory (e.g "https://example.net/cdn/")
     <p>After that the minimum required settings for Kokonotsuba to function should be met. However you may want to set some global board settings that apply to all boards before going live with them. Go to <code>global/globalBoardConfig.php</code> and set <code>$config['TRIPSALT']</code> to a random string of characters in order for secure tripcodes to function as expected. Most config values in this file can be changed at any time.</p>
 
     <h2>Main installation</h2>
