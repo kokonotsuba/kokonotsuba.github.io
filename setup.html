@@ -79,7 +79,63 @@
     <p>Open <code>global/globalconfig.php</code>. Set <code>$config['STATIC_URL']</code> to the URL of where Kokonotsuba's static files are stored; likewise <code>$config['STATIC_PATH']</code> should be set to that absolute path of the static directory in order for certain features to work. <code>$config['WEBSITE_URL']</code> gets the URL automatically, however when running multiple boards accross different domains, you will have to set it manually to the full URL.</p>
     <p>After that the minimum required settings for Kokonotsuba to function should be met. However you may want to set some global board settings that apply to all boards before going live with them. Go to <code>global/globalBoardConfig.php</code> and set <code>$config['TRIPSALT']</code> to a random string of characters in order for secure tripcodes to function as expected. Most config values in this file can be changed at any time.</p>
 
-    <h2>Main installation</h2>
+
+<h2>Dependencies</h2>
+<p>Kokonotsuba depends on several PHP extensions and external command-line tools. Make sure these are installed and configured correctly before starting the installation.</p>
+
+<h3>Required PHP Extensions</h3>
+<ul>
+	<li><code>mbstring</code></li>
+	<li><code>pdo</code> (and a driver like <code>pdo_mysql</code>)</li>
+	<li><code>gd</code></li>
+	<li><code>bcmath</code></li>
+	<li><code>mysqli</code></li>
+</ul>
+<p>To install these on Debian:</p>
+<pre><code>sudo apt update
+sudo apt install php-mbstring php-pdo php-gd php-bcmath php-mysql</code></pre>
+
+<h3>Enable PHP Extensions in <code>php.ini</code></h3>
+<p>If the extensions are installed but not enabled, you must enable them in your <code>php.ini</code> configuration file.</p>
+
+<p>Find your <code>php.ini</code> file with:</p>
+<pre><code>php --ini</code></pre>
+<p>This will show a line like:</p>
+<pre><code>Loaded Configuration File:         /etc/php/8.2/apache2/php.ini</code></pre>
+<p>or</p>
+<pre><code>Loaded Configuration File:         /etc/php/8.2/fpm/php.ini</code></pre>
+
+<p>Edit that file using a text editor (adjust PHP version and path as needed):</p>
+<pre><code>sudo nano /etc/php/8.2/apache2/php.ini    # for Apache
+</code><code>sudo nano /etc/php/8.2/fpm/php.ini        # for Nginx</code></pre>
+
+<p>Inside the file, find and remove the semicolon (<code>;</code>) from lines like:</p>
+<pre><code>;extension=mbstring
+;extension=gd</code></pre>
+<p>Change them to:</p>
+<pre><code>extension=mbstring
+extension=gd</code></pre>
+
+<p>Then restart your web server:</p>
+<pre><code>sudo systemctl restart apache2    # for Apache
+</code><code>sudo systemctl restart php8.2-fpm && sudo systemctl restart nginx    # for Nginx</code></pre>
+
+<h3>Required External Tools</h3>
+<ul>
+	<li><code>ffmpeg</code> – Creates thumbnails</li>
+	<li><code>exiftool</code> – Removes location exif data from photos</li>
+</ul>
+<p>Install them on Debian using:</p>
+<pre><code>sudo apt install ffmpeg exiftool</code></pre>
+
+<h3>Check if Commands Are Available</h3>
+<p>You can verify installation by running:</p>
+<pre><code>which ffmpeg
+which exiftool</code></pre>
+<p>If installed correctly, you’ll see output like <code>/usr/bin/ffmpeg</code>.</p>
+
+
+    <h2>Run install.php</h2>
     <p>Create the directory of the first board, inside that directory make <code>koko.php</code> and put <code><?php require '/path/to/backend/koko.php'; ?></code> in it. Copy install.php into the directory of the first board. Then, open install.php in your web browser (e.g "https://example.net/b/install.php"). There are instructions on the page that should provide enough information to complete the installation, but there are some things to keep in mind: Board Identifier is what appears in the URL when accessing the board (e.g the "b" in "https://example.net/b/"). Second is that if you get an error at all during installation, paste the error message into a search engine and see if any of the first results give you any clues on why installation failed, or paste it into ChatGPT.</p>
    
 </main>
