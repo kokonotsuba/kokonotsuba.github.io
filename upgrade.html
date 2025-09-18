@@ -40,7 +40,7 @@
     <p>As Kokonotsuba is updated, the structure of the database may change. To adapt, run these commands starting from the date of your last upgrade to the latest version:</p>
     <p>2025/08/24<br><code>ALTER TABLE threads ADD COLUMN is_sticky BOOL DEFAULT FALSE;</code></p>
     <p>2025/08/27<br><code>ALTER TABLE posts ADD COLUMN poster_hash VARCHAR(255) DEFAULT NULL;</code></p>
-    <p>2025/08/27<br><code>CREATE TABLE deleted_posts (
+    <p>2025/08/27<br><pre>CREATE TABLE deleted_posts (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	post_uid INT NOT NULL,          -- FK to posts(id)
 	board_uid INT NOT NULL,         -- FK to boards(id) (copied from post at delete time)
@@ -75,7 +75,7 @@
 	-- Enforce: at most one open row per post_uid
 	UNIQUE KEY uq_open_post_uid (open_post_uid)
 ) ENGINE=InnoDB;
-</code> and <code>CREATE TABLE files (
+</pre> <br>and<br> <pre>CREATE TABLE files (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	post_uid INT NOT NULL,
 	file_name TEXT NOT NULL,
@@ -103,7 +103,7 @@
 
 	-- Composite index for queries filtering by both post_uid and file_md5
 	KEY idx_post_uid_file_md5 (post_uid, file_md5)
-) ENGINE=InnoDB;</code></p>
+) ENGINE=InnoDB;</pre></p>
    
 </main>
 </body>
