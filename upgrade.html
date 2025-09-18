@@ -75,7 +75,7 @@
 	-- Enforce: at most one open row per post_uid
 	UNIQUE KEY uq_open_post_uid (open_post_uid)
 ) ENGINE=InnoDB;
-</pre> <br>and<br> <pre>CREATE TABLE files (
+</pre> <br> <pre>CREATE TABLE files (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	post_uid INT NOT NULL,
 	file_name TEXT NOT NULL,
