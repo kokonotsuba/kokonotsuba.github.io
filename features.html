@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kokonotsuba!</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body id="main">
+  <header>
+    <div id="titleArea">
+      <h1>Kokonotsuba BBS Software</h1>
+      <div class="subtitle wings">by HARD</div>
+    </div>
+
+    <nav id="mainNav">
+      <ul>
+        <li><a class="navlink" href="main.html">Index</a></li>
+        <li><a class="navlink" href="history.html">History</a></li>
+        <li><a class="navlink" href="features.html">Features</a></li>
+        <li><a class="navlink" href="devs.html">Developers</a></li>
+        <li><a class="navlink" href="license.html">License Terms</a></li>
+        <li><a class="navlink" href="https://github.com/Heyuri/kokonotsuba/" target="_blank">Repository</a></li>
+        <li><a class="navlink" href="setup.html">Set Up</a></li>
+        <li><a class="navlink" href="upgrade.html">Upgrade</a></li>
+        <li><a class="navlink" href="//img.heyuri.net/b/" target="_blank">Example Board</a></li>
+        <li><a class="navlink" href="//cgi.heyuri.net/devchat/" target="_blank">Dev Chat</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2 id="welcome">Features</h2>
+
+    <div class="centerText">
+      <img class="randomImage" height="400" src="https://img.heyuri.net/c/randomimg2.php" alt="Random image from 2D Cute@Heyuri" title="Random image from 2D Cute@Heyuri">
+    </div>
+
+    <h2>Disclaimer</h2>
+    <p>This doesn't cover <i>every</i> feature right now. But functions as an overview of what you can expect.</p>
+
+    <h2>Basic</h2>
+    <p>Kokonotsuba has all basic features you expect from an Imageboard. Such as:</p>
+    <ul>
+        <li>Sage</li>
+        <li>Deleting posts</li>
+        <li>Tripcodes</li>
+        <li>Quoting text</li>
+        <li>Quote links</li>
+    </ul>
+
+    <h2>Neat</h2>
+        <h3>Global message</h3>
+        <p>The <i>Global message</i> is a instance-wide message that the Administrator can set. It appears near the post form</p>
+
+        <h3>Blotter</h3>
+        <p>Can be</p>
+        <p>Entires can be created and deleted from the <i>[Manage blotter]</i> page. Which an Administrator can find on the link bar in <i>[Admin]</i></p>
+
+        <h3>Banners and Ads</h3>
+        <p>Kokonotsuba has a banner and ad (internally called 'fullbanner')</p>
+
+        <h3>Overboard</h3>
+        <p>The <i>Overboard</i> is a page that will show all non-hidden boards on a single page, it can be accessed from [Overboard] at the top right of the board view. Boards can also be hidden by the user with the <i>Filter boards</i> form. Which will not show any threads from boards that arent check-marked.</p>
+        
+        <h3>Accounts</h3>
+        <p>Kokonotsuba has staff accounts. Staff can change their password and view their own <i>Action record</i> (a counter of how many bans, deletions, etc.) from <i>[Accounts]</i> in [Admin]</p>
+        <p>More on account management in the next section.</p>
+
+    <h2>Admin/mod tools</h2>
+    <p>A lot of BBSes suffer from poorly written mod tools and features that make moderating the site a pain. Kokonotsuba however, has some superior implementations.</p>
+        <h3>JS post deletion</h3>
+        <p>If you have JS enabled on your browser. When deleting a post, attachment, or muting, some javascript will hide or modify the post's html so the page doesn't have to be fully refreshed. Which can make dealing with spam attacks a breeze.</p>
+        <p>For Janitors the post will simply disapear and a message will confirm if the post was deleted or not.</p>
+        <p>For Mods and above, the post will have its opacity reduced and be hidden from regular users. More on this next.</p>
+
+        <h3>Trash bin / Deleted posts</h3>
+        <p>On Kokonotsuba, deleting things doesn't automatically remove them from the system right away. Deleting a post will make it hidden from users and Janitors. This is extremely useful for preventing rogue Janitors or compromrised mod accounts from permanently wiping the board.</p>
+        <p>At [Admin], if your role is high enough, you'll see [Manage deleted posts] on the link bar. On this page you'll see all deleted posts along with who deleted them, when, and optionally <i>why</i>in the form of a note.</p>
+        <p>From the live view as a Moderator or above, you can see deleted posts/threads/attachments with reduced opacity and [DELETED] on them - these posts are only visible to you.</p>
+        <p>You can restore any of these posts by clicking the [Restore] button.</p>
+        <p>For illegal content you'll want it permanently removed from the server - which you can achieve by clicking the [Purge] button. Which will wipe the post and attachment from the database and filesystem.</p>
+
+        <h3>Banning and Mutes</h3>
+        <p></p>
+
+        <h3>Account management</h3>
+        <p>Accounts can be created, deleted, and promoted/demoted by the Adminstrator</p>
+
+        <h3>Board management</h3>
+        
+        <h3>Rebuild board / Manage rebuild</h3>  
+        <p><i>Rebuild board</i> will just rebuild</p>
+
+        <h3>Autosage</h3>
+        <p>Threads can be <i>autosaged</i>, also known bump lock, which prevents the thread from bumped even the reply is a non-sage.</p>
+        
+        <h3>Sticky</h3>  
+        <p>Pins a thread to the top of the board - above all other threads. The thread will however, be only showed in its regular bump from the overboard.</p>
+
+    <h2>Futaba-derived features</h2>
+    <p></p>
+
+    
+</main>
+</body>
+</html>
