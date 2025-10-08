@@ -1,0 +1,7 @@
+ALTER TABLE files
+    DROP COLUMN is_thumb,
+    ADD COLUMN thumb_file_width INT DEFAULT NULL,
+    ADD COLUMN thumb_file_height INT DEFAULT NULL;
+
+ALTER TABLE deleted_posts
+DROP COLUMN board_uid;
