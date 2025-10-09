@@ -3,5 +3,11 @@ ALTER TABLE files
     ADD COLUMN thumb_file_width INT DEFAULT NULL,
     ADD COLUMN thumb_file_height INT DEFAULT NULL;
 
+
+
+ALTER TABLE deleted_posts DROP FOREIGN KEY fk_dp_board;
+DROP INDEX idx_board_deleted_at ON deleted_posts;
+
 ALTER TABLE deleted_posts
 DROP COLUMN board_uid;
+
