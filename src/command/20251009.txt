@@ -6,6 +6,9 @@ ALTER TABLE files
 ---------------------------------------------------------
 
 ALTER TABLE deleted_posts DROP FOREIGN KEY fk_dp_board;
+
+---------------------------------------------------------
+
 DROP INDEX idx_board_deleted_at ON deleted_posts;
 
 ---------------------------------------------------------
