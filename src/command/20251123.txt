@@ -1,0 +1,151 @@
+
+DROP TABLE IF EXISTS files;
+
+---------------------------------------------------------
+
+CREATE TABLE files (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    post_uid INT NOT NULL,
+    file_name VARCHAR(255) NOT NULL,
+    stored_filename TEXT NOT NULL,
+    file_ext VARCHAR(16) NOT NULL,
+    file_md5 VARCHAR(32) NOT NULL,
+    file_width INT DEFAULT NULL,
+    file_height INT DEFAULT NULL,
+    thumb_file_width INT DEFAULT NULL,
+    thumb_file_height INT DEFAULT NULL,
+    file_size BIGINT UNSIGNED NULL,
+    mime_type VARCHAR(255) NULL,
+    is_hidden TINYINT(1) NOT NULL DEFAULT 0,
+    is_deleted TINYINT(1) NOT NULL DEFAULT 0,
+    timestamp_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    CONSTRAINT fk_file_post_uid FOREIGN KEY (post_uid) REFERENCES posts(post_uid) ON DELETE CASCADE,
+    INDEX idx_md5 (file_md5),
+    INDEX idx_post_uid (post_uid),
+    INDEX idx_file_ext (file_ext),
+    INDEX idx_file_size (file_size),
+    INDEX idx_file_name_prefix (file_name(255)),
+    INDEX idx_mime_type (mime_type),
+    INDEX idx_post_uid_file_md5 (post_uid, file_md5)
+) ENGINE=InnoDB;
+
+---------------------------------------------------------
+
+INSERT INTO files (
+    post_uid,
+    file_name,
+    stored_filename,
+    file_ext,
+    file_md5,
+    file_size,
+    file_width,      -- For imgw (image width)
+    file_height,     -- For imgh (image height)
+    thumb_file_width,  -- For tw (thumb width)
+    thumb_file_height  -- For th (thumb height)
+)
+SELECT
+    p.post_uid,
+    p.fname,  -- Mapping fname to file_name
+    p.tim,    -- Mapping tim to stored_filename
+    TRIM(LEADING '.' FROM p.ext),  -- Remove the leading dot from file extension
+    p.md5chksum,  -- Mapping md5chksum to file_md5
+    CAST(SUBSTRING_INDEX(p.imgsize, ' ', 1) AS UNSIGNED),  -- Extract and cast the numeric part of imgsize to file_size
+    p.imgw,  -- Mapping imgw (image width) to file_width
+    p.imgh,  -- Mapping imgh (image height) to file_height
+    p.tw,    -- Mapping tw (thumb width) to thumb_file_width
+    p.th     -- Mapping th (thumb height) to thumb_file_height
+FROM posts p
+WHERE p.post_uid IS NOT NULL
+  AND p.ext IS NOT NULL
+  AND TRIM(p.ext) <> '';  -- Ensure ext is not NULL or empty string
+
+---------------------------------------------------------
+
+ALTER TABLE `posts`
+	DROP COLUMN `md5chksum`,
+	DROP COLUMN `tim`,
+	DROP COLUMN `time`,
+	DROP COLUMN `fname`,
+	DROP COLUMN `ext`,
+	DROP COLUMN `imgw`,
+	DROP COLUMN `imgh`,
+	DROP COLUMN `imgsize`,
+	DROP COLUMN `tw`,
+	DROP COLUMN `th`;
+
+---------------------------------------------------------
+
+ALTER TABLE deleted_posts
+    ADD COLUMN file_id INT NULL;
+
+---------------------------------------------------------
+
+ALTER TABLE deleted_posts
+    ADD INDEX idx_file_id (file_id);
+
+---------------------------------------------------------
+
+ALTER TABLE deleted_posts
+    ADD CONSTRAINT fk_dp_file
+        FOREIGN KEY (file_id) REFERENCES files(id)
+        ON DELETE CASCADE;
+
+---------------------------------------------------------
+
+ALTER TABLE deleted_posts
+    ADD COLUMN open_key INT AS (
+        CASE 
+            WHEN restored_at IS NULL AND file_id IS NULL THEN post_uid
+            ELSE NULL
+        END
+    ) STORED;
+
+---------------------------------------------------------
+
+ALTER TABLE deleted_posts
+    ADD UNIQUE KEY uq_open_post (open_key);
+
+---------------------------------------------------------
+
+ALTER TABLE deleted_posts
+    DROP INDEX uq_open_post_uid;
+
+---------------------------------------------------------
+
+ALTER TABLE deleted_posts 
+    DROP INDEX uq_open_post_uid;
+
+---------------------------------------------------------
+
+ALTER TABLE deleted_posts
+    MODIFY COLUMN open_post_uid INT(11)
+    GENERATED ALWAYS AS (
+        CASE 
+            WHEN restored_at IS NULL AND file_id IS NULL 
+                THEN post_uid 
+            ELSE NULL 
+        END
+    ) STORED;
+
+---------------------------------------------------------
+
+ALTER TABLE deleted_posts
+    ADD UNIQUE KEY uq_open_post_uid (open_post_uid);
+
+---------------------------------------------------------
+
+ALTER TABLE deleted_posts
+    DROP INDEX uq_open_post,
+    DROP COLUMN open_key;
+
+---------------------------------------------------------
+
+ALTER TABLE `files` ADD COLUMN `is_animated` TINYINT(1) NOT NULL DEFAULT 0;
+
+---------------------------------------------------------
+
+UPDATE files AS f JOIN posts AS p ON p.post_uid = f.post_uid SET f.is_animated = 1 WHERE p.status LIKE '%agif%';
+
+---------------------------------------------------------
+
+UPDATE posts SET status = REPLACE(status, '_agif_', '');
