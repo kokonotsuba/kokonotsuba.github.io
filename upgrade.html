@@ -23,7 +23,7 @@
         <li><a class="navlink" href="https://github.com/Heyuri/kokonotsuba/" target="_blank">Repository</a></li>
         <li><a class="navlink" href="setup.html">Set Up</a></li>
         <li><a class="navlink" href="upgrade.html">Upgrade</a></li>
-        <li><a class="navlink" href="//img.heyuri.net/b/" target="_blank">Example Board</a></li>
+        <li><a class="navlink" href="//img.heyuri.net/z/" target="_blank">Example Board</a></li>
         <li><a class="navlink" href="//cgi.heyuri.net/devchat/" target="_blank">Dev Chat</a></li>
       </ul>
     </nav>
@@ -40,7 +40,7 @@
     <p>As Kokonotsuba is updated, the structure of the database may change. To adapt, run these commands starting from the date of your last upgrade to the latest version:</p>
     <p>2025/08/24<br><code>ALTER TABLE threads ADD COLUMN is_sticky BOOL DEFAULT FALSE;</code></p>
     <p>2025/08/27<br><code>ALTER TABLE posts ADD COLUMN poster_hash VARCHAR(255) DEFAULT NULL;</code></p>
-    <p>2025/09/18<br><a href="src/command/20250918_1.txt">Create deleted posts table</a><br><a href="src/command/20250918_2.txt">Create files table</a></p>
+    <p>2025/09/18<br><a href="src/command/20250918.txt">Create deleted posts and files tables</a></p>
     <p>2025/10/09<br><a href="src/command/20251009.txt">Alter file and deleted posts table</a></p>
     <p>2025/10/16<br><a href="src/command/20251016.txt">Create capcodes table</a></p>
     <p>2025/11/23<br><a href="src/command/20251123.txt">Move file information to the dedicated table</a></p>
