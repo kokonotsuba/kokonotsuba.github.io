@@ -5,6 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kokonotsuba!</title>
   <link rel="stylesheet" href="./style.css">
+
+
+<style>
+.dev-list {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	margin-top: 20px;
+}
+
+.dev-entry {
+	display: flex;
+	align-items: flex-start;
+}
+
+.dev-img {
+	margin-right: 15px;
+}
+
+.dev-text {
+	line-height: 1.4;
+}
+</style>
+
 </head>
 <body id="main">
   <header>
@@ -38,14 +62,91 @@
 
     <h2>Devs</h2>
     <p>Some notable developers of Kokonotsuba are as follows:</p>
-    <ul>
-        <li>Kaguya - Administrator, leads development and features</li>
-        <li>Anonwaha - Behind most of the HTML/CSS in Kokonotsuba</li>
-        <li>Pen man - <b>Pen</b> tester</li>
-        <li>Komeo - PHP developer</li>
-        <li>Hachikuji - PHP developer</li>
-        <li>COW - Has helped discover various vulnerabilities and patch them</li>
-    </ul>
+
+<div class="dev-list">
+
+	<div class="dev-entry">
+		<img src="src/devs/kaguya.jpg" width="100" height="100" class="dev-img">
+		<div class="dev-text">
+			<b>Kaguya</b><br>
+			Administrator, leads development and features
+		</div>
+	</div>
+
+	<div class="dev-entry">
+		<img src="src/devs/anonwaha.jpg" width="100" height="100" class="dev-img">
+		<div class="dev-text">
+			<b>Anonwaha</b><br>
+			Behind most of the HTML/CSS in Kokonotsuba
+		</div>
+	</div>
+
+	<div class="dev-entry">
+		<img src="src/devs/penman.jpg" width="100" height="100" class="dev-img">
+		<div class="dev-text">
+			<b>Pen man</b><br>
+			<b>Pen</b> tester
+		</div>
+	</div>
+
+	<div class="dev-entry">
+		<img src="src/devs/komeo.jpg" width="100" height="100" class="dev-img">
+		<div class="dev-text">
+			<b>Komeo</b><br>
+			PHP developer
+		</div>
+	</div>
+
+	<div class="dev-entry">
+		<img src="src/devs/hachikuji.jpg" width="100" height="100" class="dev-img">
+		<div class="dev-text">
+			<b>Hachikuji</b><br>
+			PHP developer
+		</div>
+	</div>
+
+	<div class="dev-entry">
+		<img src="src/devs/cow.jpg" width="100" height="100" class="dev-img">
+		<div class="dev-text">
+			<b>COW</b><br>
+			Has helped discover various vulnerabilities and patch them
+		</div>
+  </div>
+
+  <div class="dev-entry">
+		<img src="src/devs/kuz.jpg" width="100" height="100" class="dev-img">
+		<div class="dev-text">
+			<b>Kuz</b><br>
+			Old administrator, used to lead and fund proprietary-era development
+		</div>
+  </div>
+
+  <div class="dev-entry">
+		<img src="src/devs/lolico.jpg" width="100" height="100" class="dev-img">
+		<div class="dev-text">
+			<b>Lolico</b><br>
+			Proprietary-era developer who picked Pixmicat as Kokonotsuba's base
+		</div>
+  </div>
+
+  <div class="dev-entry">
+		<img src="src/devs/barry.jpg" width="100" height="100" class="dev-img">
+		<div class="dev-text">
+			<b>Barry</b><br>
+			Proprietary-era PHP developer
+		</div>
+  </div>
+
+  <div class="dev-entry">
+		<img src="src/devs/bobman.jpg" width="100" height="100" class="dev-img">
+		<div class="dev-text">
+			<b>Bobman</b><br>
+			Proprietary-era PHP developer
+		</div>
+  </div>
+
+</div>
+
 </main>
 </body>
 </html>
