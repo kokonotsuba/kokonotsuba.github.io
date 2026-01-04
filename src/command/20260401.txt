@@ -1,0 +1,3 @@
+ALTER TABLE posts
+	DROP INDEX `no`,
+	ADD UNIQUE KEY uniq_board_no (`boardUID`, `no`);
