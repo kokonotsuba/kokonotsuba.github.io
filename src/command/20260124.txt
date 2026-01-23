@@ -1,0 +1,5 @@
+ALTER TABLE posts
+ADD FULLTEXT INDEX ft_posts_email (email);
+
+ALTER TABLE files
+ADD FULLTEXT INDEX ft_files_file_name (file_name);
