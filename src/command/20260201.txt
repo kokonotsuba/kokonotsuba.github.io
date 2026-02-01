@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS soudane_votes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ip_address VARCHAR(255),
+    yeah TINYINT(1) DEFAULT 0,
+    post_uid INT NULL,
+    date_added DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+
+    INDEX idx_soudane_vote (post_uid, yeah),
+    INDEX idx_soudane_ip (ip_address),
+    INDEX idx_soudane_date_added (date_added),
+
+    CONSTRAINT fk_soudane_post_uid FOREIGN KEY (post_uid) REFERENCES posts(post_uid) ON DELETE CASCADE
+) ENGINE=InnoDB;
