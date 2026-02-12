@@ -1,0 +1,8 @@
+1. run this command to replace all instances of an outdated namespace with the new one - specify the path of your koko directory instead of "/var/www/sites/kokonotsuba.serverchan.test/private/kokonotsuba/global/"
+`find /var/www/sites/kokonotsuba.serverchan.test/private/kokonotsuba/global/ -type f -name "*.php" -exec sed -i 's|Kokonotsuba\\Root\\Constants\\|Kokonotsuba\\|g' {} +`
+
+2. update koko.php, add bootstrap/ to the root koko directory
+
+3. remove the code/ and module/ directories then run `git pull`. There are new files like autoload.php in the root directory - constants.php has been moved to code/Kokonotsuba/
+
+4. If you haven't already, move all AuthLevels from globalBoardConfig.php to globalconfig.php.
