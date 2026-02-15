@@ -3,5 +3,5 @@ CREATE TABLE IF NOT EXISTS last_thread_submissions (
  board_uid INT NOT NULL UNIQUE,
  last_submission_timestamp TIMESTAMP(3) NOT NULL,
 
- CONSTRAINT fk_last_thread_submissions_board_uid FOREIGN KEY (board_uid) REFERENCES `{$sanitizedTableNames['BOARD_TABLE']}`(board_uid) ON DELETE CASCADE
+ CONSTRAINT fk_last_thread_submissions_board_uid FOREIGN KEY (board_uid) REFERENCES boards(board_uid) ON DELETE CASCADE
 ) ENGINE=InnoDB;
