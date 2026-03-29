@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS blotter (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                blotter_content TEXT NOT NULL,
+                added_by INT NULL,
+                date_added DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+                
+                CONSTRAINT fk_blotter_added_by FOREIGN KEY (added_by) REFERENCES accounts(id) ON DELETE SET NULL
+) ENGINE=InnoDB;
