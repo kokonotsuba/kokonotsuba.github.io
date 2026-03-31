@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS file_bans (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                file_md5 CHAR(32) NOT NULL,
+                added_by INT NULL,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+
+                UNIQUE KEY uq_file_md5 (file_md5),
+                INDEX idx_file_ban_added_by (added_by),
+
+                CONSTRAINT fk_file_ban_added_by FOREIGN KEY (added_by) REFERENCES `accounts`(id) ON DELETE SET NULL
+) ENGINE=InnoDB;
