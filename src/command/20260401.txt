@@ -1,0 +1,9 @@
+ALTER TABLE spam_string_rules ADD COLUMN apply_op_only TINYINT(1) NOT NULL DEFAULT 0;
+
+---------------------------------------------------------
+
+ALTER TABLE spam_string_rules ADD COLUMN silent_reject TINYINT(1) NOT NULL DEFAULT 0;
+
+---------------------------------------------------------
+
+ALTER TABLE spam_string_rules ADD COLUMN apply_filename TINYINT(1) NOT NULL DEFAULT 1 AFTER apply_email;
