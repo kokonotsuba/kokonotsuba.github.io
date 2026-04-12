@@ -1,0 +1,212 @@
+== Perform the following queries:
+
+CREATE TABLE IF NOT EXISTS perceptual_bans (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    phash BIGINT NOT NULL,
+    phash_hex CHAR(16) NOT NULL,
+    added_by INT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    UNIQUE KEY uq_phash (phash),
+    INDEX idx_perceptual_ban_added_by (added_by),
+    CONSTRAINT fk_perceptual_ban_added_by FOREIGN KEY (added_by) REFERENCES accounts(id) ON DELETE SET NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS banner_ads (
+                id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                link TEXT DEFAULT NULL,
+                banner_file_name TEXT NOT NULL,
+                ip_address VARCHAR(45) DEFAULT NULL,
+                is_active TINYINT(1) NOT NULL DEFAULT 1,
+                is_approved TINYINT(1) NOT NULL DEFAULT 0,
+                date_submitted TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+                INDEX idx_active_approved (is_active, is_approved),
+                INDEX idx_date_submitted (date_submitted),
+                INDEX idx_ip_date (ip_address, date_submitted)
+            ) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS private_messages (
+                id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                ip_address TEXT NOT NULL, 
+                date_sent TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+                sender_tripcode VARCHAR(255) NOT NULL,
+                sender_name TEXT NOT NULL,
+                recipient_tripcode VARCHAR(255) NOT NULL,
+                message_subject TEXT NOT NULL,
+                message_body TEXT NOT NULL,
+                is_read TINYINT(1) NOT NULL DEFAULT 0
+            ) ENGINE=InnoDB;
+
+CREATE INDEX idx_posts_thread_rank
+ON posts (thread_uid, is_op DESC, post_uid DESC);
+
+CREATE INDEX idx_posts_thread_rank_cover
+ON posts (thread_uid, is_op DESC, post_uid DESC);
+
+CREATE INDEX idx_posts_no
+ON posts (no);
+
+CREATE INDEX idx_posts_thread_deleted
+ON posts (thread_uid, deleted, is_op DESC, post_uid DESC);
+
+== now add the following entires to databaseSettings.php
+	'PRIVATE_MESSAGE_TABLE' => 'private_messages', // for storing private messages
+	'BANNER_TABLE' => 'banners', // for storing banner data
+	'BANNER_AD_TABLE' => 'banner_ads', // for storing banner ad data
+	'BLOTTER_TABLE' => 'blotter', // for storing blotter entries
+	'FILE_BAN_TABLE' => 'file_bans', // for storing banned file MD5 hashes
+	'PERCEPTUAL_BAN_TABLE' => 'perceptual_bans', // for storing perceptually banned file hashes
+
+== update all code files - module/, code/, bootstrap/, templates/, and koko.php
+
+== update all static/css and static/js values and clear caches.
+
+== go into globalBoardConfig.php and add these values
+// Emotes that will show up if the emote module is enabled
+// it works when the user puts the name of the emote between :: in their post comment
+// e.g :nigra: gets turned into '<img src="nigra.gif">'
+// NOTE: Emotes *must* be in `static/image/emotes/`
+$config['ModuleSettings']['EMOTES'] = [
+	'angry'		=>'emo-yotsuba-angry.gif',
+	'astonish'	=>'emo-yotsuba-astonish.gif',
+	'biggrin'	=>'emo-yotsuba-biggrin.gif',
+	'closed-eyes'=>'emo-yotsuba-closed-eyes.gif',
+	'closed-eyes2'=>'emo-yotsuba-closed-eyes2.gif',
+	'cool'		=> 'emo-yotsuba-cool.gif',
+	'cry'		=> 'emo-yotsuba-cry.gif',
+	'dark'		=>'emo-yotsuba-dark.gif',
+	'dizzy'		=>'emo-yotsuba-dizzy.gif',
+	'drool'		=>'emo-yotsuba-drool.gif',
+	'glare'		=>'emo-yotsuba-glare.gif',
+	'glare1'	=>'emo-yotsuba-glare-01.gif',
+	'glare2'	=>'emo-yotsuba-glare-02.gif',
+	'happy'		=>'emo-yotsuba-happy.gif',
+	'huh'		=>'emo-yotsuba-huh.gif',
+	'nosebleed'	=>'emo-yotsuba-nosebleed.gif',
+	'nyaoo'		=>'emo-yotsuba-nyaoo.gif',
+	'nyaoo2'	=>'emo-yotsuba-nyaoo2.gif',
+	'nyaoo-closedeyes'	=>'emo-yotsuba-nyaoo-closedeyes.gif',
+	'nyaoo-closed-eyes'	=>'emo-yotsuba-nyaoo-closedeyes.gif',
+	'ph34r'		=>'emo-yotsuba-ph34r.gif',
+	'ninja'		=>'emo-yotsuba-ph34r.gif',
+	'rolleyes'	=>'emo-yotsuba-rolleyes.gif',
+	'rollseyes'	=>'emo-yotsuba-rolleyes.gif',
+	'sad'		=>'emo-yotsuba-sad.gif',
+	'smile'		=>'emo-yotsuba-smile.gif',
+	'sweat'		=>'emo-yotsuba-sweat.gif',
+	'sweat2'	=>'emo-yotsuba-sweat2.gif',
+	'sweat3'	=>'emo-yotsuba-sweat3.gif',
+	'tongue'	=>'emo-yotsuba-tongue.gif',
+	'unsure'	=>'emo-yotsuba-unsure.gif',
+	'wink'		=>'emo-yotsuba-wink.gif',
+	'x3'		=>'emo-yotsuba-x3.gif',
+	'xd'		=>'emo-yotsuba-xd.gif',
+	'xp'		=>'emo-yotsuba-xp.gif',
+	'love'		=>'emo-yotsuba-heart.gif',
+	'blush'		=>'emo-yotsuba-blush3.gif',
+	'mask'		=>'emo-yotsuba-mask.gif',
+	'emo'		=>'emo.gif',
+	'lolico'	=>'emo-yotsuba-lolico.gif',
+	'kuz'		=>'emo-yotsuba-tomo.gif',
+	'dance'		=>'heyuri-dance.gif',
+	'dance2'	=>'heyuri-dance-pantsu.gif',
+	'nigra'		=>'nigra.gif',
+	'sage'		=>'sage.gif',
+	'longcat'	=>'longcat.gif',
+	'tacgnol'	=>'tacgnol.gif',
+	'mona2'		=>'mona2.gif',
+	'nida'		=>'nida.gif',
+	'iyahoo'	=>'iyahoo.gif',
+	'banana'	=>'banana.gif',
+	'onigiri'	=>'onigiri.gif',
+	'shii'		=>'anime_shii01.gif',
+	'saitama'	=>'anime_saitama05.gif',
+	'foruda'	=>'foruda.gif',
+	'nagato'	=>'nagato.gif',
+	'kuma6'		=>'kuma6.gif',
+	'waha'		=>'waha.gif',
+	'hokke'		=>'hokke.gif',
+	'af2'		=>'af2.gif',
+	'pata'		=>'u_pata.gif',
+	'depression'=>'u_sasu.gif',
+	'saitama2'	=>'anime_saitama06.gif',
+	'monapc'	=>'anime_miruna_pc.gif',
+	'purin'		=>'purin.gif',
+	'ranta'		=>'anime_imanouchi04.gif',
+];
+
+// Kaomoji (Shift-JIS faces) shown in the post form
+// 'display text' => 'value inserted into comment'
+$config['ModuleSettings']['KAOMOJI'] = [
+	'ヽ(´ー｀)ノ' => '[kao]ヽ(´ー｀)ノ[/kao]',
+	'(;´Д`)' => '[kao](;´Д`)[/kao]',
+	'ヽ(´∇`)ノ' => '[kao]ヽ(´∇`)ノ[/kao]',
+	'(´人｀)' => '[kao](´人｀)[/kao]',
+	'(＾Д^)' => '[kao](＾Д^)[/kao]',
+	'(´ー`)' => '[kao](´ー`)[/kao]',
+	'（ ´,_ゝ`）' => '[kao]（ ´,_ゝ`）[/kao]',
+	'(´～`)' => '[kao](´～`)[/kao]',
+	'(;ﾟДﾟ)' => '[kao](;ﾟДﾟ)[/kao]',
+	'(;ﾟ∀ﾟ)' => '[kao](;ﾟ∀ﾟ)[/kao]',
+	'┐(ﾟ～ﾟ)┌' => '[kao]┐(ﾟ～ﾟ)┌[/kao]',
+	'ヽ(`Д´)ノ' => '[kao]ヽ(`Д´)ノ[/kao]',
+	'( ´ω`)' => '[kao]( ´ω`)[/kao]',
+	'(ﾟー｀)' => '[kao](ﾟー｀)[/kao]',
+	'(・∀・)' => '[kao](・∀・)[/kao]',
+	'（⌒∇⌒ゞ）' => '[kao]（⌒∇⌒ゞ）[/kao]',
+	'(ﾟ血ﾟ#)' => '[kao](ﾟ血ﾟ#)[/kao]',
+	'(ﾟｰﾟ)' => '[kao](ﾟｰﾟ)[/kao]',
+	'(´￢`)' => '[kao](´￢`)[/kao]',
+	'(´π｀)' => '[kao](´π｀)[/kao]',
+	'ヽ(ﾟρﾟ)ノ' => '[kao]ヽ(ﾟρﾟ)ノ[/kao]',
+	'Σ(;ﾟДﾟ)' => '[kao]Σ(;ﾟДﾟ)[/kao]',
+	'Σ(ﾟдﾟ|||)' => '[kao]Σ(ﾟдﾟ|||)[/kao]',
+	'ｷﾀ━━━(・∀・)━━━!!' => '[kao]ｷﾀ━━━(・∀・)━━━!![/kao]',
+];
+
+== find the 'ModuleList' config in globalBoardConfig.php and add the follow elements:
+	'privateMessage' => true,
+	'fullBanner' => true,
+    'postApi' => true,
+    'percetpualBan' => true,
+    'quickReply' => true,
+
+== remove the following config from globalBoardConfig.php:
+// These banners *must* be in the web-accessible static/fullbanners/ directory
+// image name => URL the banner will lead to when clicked
+$config['ModuleSettings']['BANNER_ADS'] = array(
+	'rules2.png' => 'https://www.heyuri.net/index.php?p=rules',
+	'nominate1.png' => 'https://cgi.heyuri.net/nominate/',
+	'sw2.png' => 'https://dis.heyuri.net/sw/',
+);
+
+== also in globalBoardsConfig.php / other configs:
+Remove all instances of '.tpl' from any config value. a simple find and replace should work
+find global/ -type f -exec sed -i 's/\.tpl//g' {} +
+
+== go to globalconfig.php and add:
+$config['AuthLevels']['CAN_MANAGE_PMS'] = Kokonotsuba\userRole::LEV_ADMIN;
+
+== now in globalConfig.php, find addinfo value and remove this element:
+    '<div id="formfuncs"><a class="postformOption" href="javascript:kkjs.form_switch();">Switch form position</a> | <a class="postformOption" href="'.$config['STATIC_URL'].'html/bbcode.html" target="_blank">BBCode reference</a></div>',
+
+== the board should load now. if it doesn't go to https://cgi.heyuri.net/devchat/ and provide error logs and what you've done so FOREACH
+
+== login and go to [Admin] and find [Full banners]. Go there are re-upload all banner ads that you previously had
+
+=== You should be good to go from here on out, but go to https://cgi.heyuri.net/devchat/ for any more info
+
+
+FUN FAX
+- You can post with a tripcode and mod capcode at the same time now as long as you're logged in: name#trip ## Admin
+- Banner ads can be submitted by users, but they do require staff approval.
+- you can perceptually ban media files now, which is far more effective than simple md5 hash bans
+- ban lists are now paged. theres also a little button to check
+- javascript and the rest of the frontend are better integrated with each other.
+- banner ads also show up on the post form
+- theres a post/thread api
+- posting speed is greatly improved for nokofags
+- quotelinks will resolve to posts even if they're not on the page.
+- theres also cross-board quote links (limited to assuming)
+- catalog js is reworked to sort live on the page. 
+- attachments have their own menu for js users
+- mod tools now have anti-CSRF token support to prevent csrf attacks on staff.
