@@ -169,6 +169,8 @@ $config['ModuleSettings']['KAOMOJI'] = [
     'postApi' => true,
     'percetpualBan' => true,
     'quickReply' => true,
+    'tegaki' => true,
+
 
 == remove the following config from globalBoardConfig.php:
 // These banners *must* be in the web-accessible static/fullbanners/ directory
