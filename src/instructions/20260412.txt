@@ -45,9 +45,6 @@ ON posts (thread_uid, is_op DESC, post_uid DESC);
 CREATE INDEX idx_posts_no
 ON posts (no);
 
-CREATE INDEX idx_posts_thread_deleted
-ON posts (thread_uid, deleted, is_op DESC, post_uid DESC);
-
 == now add the following entires to databaseSettings.php
 	'PRIVATE_MESSAGE_TABLE' => 'private_messages', // for storing private messages
 	'BANNER_TABLE' => 'banners', // for storing banner data
