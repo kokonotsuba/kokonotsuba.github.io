@@ -164,7 +164,7 @@ $config['ModuleSettings']['KAOMOJI'] = [
 	'privateMessage' => true,
 	'fullBanner' => true,
     'postApi' => true,
-    'percetpualBan' => true,
+    'perceptualBan' => true,
     'quickReply' => true,
     'tegaki' => true,
 
@@ -178,15 +178,15 @@ $config['ModuleSettings']['BANNER_ADS'] = array(
 	'sw2.png' => 'https://dis.heyuri.net/sw/',
 );
 
-== also in globalBoardsConfig.php / other configs:
+== now in globalBoardConfig.php, find addinfo value and remove this element:
+    '<div id="formfuncs"><a class="postformOption" href="javascript:kkjs.form_switch();">Switch form position</a> | <a class="postformOption" href="'.$config['STATIC_URL'].'html/bbcode.html" target="_blank">BBCode reference</a></div>',
+
+== also in globalBoardConfig.php / other configs:
 Remove all instances of '.tpl' from any config value. a simple find and replace should work
 find global/ -type f -exec sed -i 's/\.tpl//g' {} +
 
 == go to globalconfig.php and add:
 $config['AuthLevels']['CAN_MANAGE_PMS'] = Kokonotsuba\userRole::LEV_ADMIN;
-
-== now in globalConfig.php, find addinfo value and remove this element:
-    '<div id="formfuncs"><a class="postformOption" href="javascript:kkjs.form_switch();">Switch form position</a> | <a class="postformOption" href="'.$config['STATIC_URL'].'html/bbcode.html" target="_blank">BBCode reference</a></div>',
 
 == the board should load now. if it doesn't go to https://cgi.heyuri.net/devchat/ and provide error logs and what you've done so FOREACH
 
