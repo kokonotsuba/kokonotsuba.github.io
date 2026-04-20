@@ -161,8 +161,6 @@ $config['ModuleSettings']['KAOMOJI'] = [
 ];
 
 == find the 'ModuleList' config in globalBoardConfig.php and add the follow elements:
-	'privateMessage' => true,
-	'fullBanner' => true,
     'postApi' => true,
     'perceptualBan' => true,
     'quickReply' => true,
