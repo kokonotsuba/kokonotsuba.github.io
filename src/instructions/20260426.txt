@@ -1,0 +1,40 @@
+update code/ and module/
+
+add 'ads' => true to the ModuleList.
+
+
+then add this to databaseSettings.php
+	'ADS_TABLE' => 'ads', // for storing ad inventory
+
+then run this query
+CREATE TABLE IF NOT EXISTS ads (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                slot VARCHAR(20) NOT NULL,
+                type VARCHAR(10) NOT NULL,
+                src TEXT NULL,
+                href TEXT NULL,
+                alt TEXT NULL,
+                html TEXT NULL,
+                enabled TINYINT(1) NOT NULL DEFAULT 1,
+                date_added DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+                INDEX idx_ads_slot_enabled (slot, enabled)
+            ) ENGINE=InnoDB;
+
+Then add these config values to globalBoardConfig.php
+
+//mod_ads
+$config['ModuleSettings']['ADS_STICKY_ROTATE_SECONDS'] = 45;
+$config['ModuleSettings']['ADS_INLINE_EVERY_N_THREADS'] = 4; // Insert inline ad after every N threads. Requires at least N threads on the page.
+$config['ModuleSettings']['ADS_INLINE_COUNT'] = 2; // Number of ads to show side-by-side in each inline row (1–5).
+$config['ModuleSettings']['ADS_POST_AD_EVERY_N_POSTS'] = 15; // Insert a post-style ad after every N reply posts within a thread.
+
+// Slot dimensions are fixed in layout, but containers still cap at max-width: 100%.
+$config['ModuleSettings']['ADS_SLOT_DIMENSIONS'] = [
+	'top' => ['width' => 728, 'height' => 90],
+	'mobile' => ['width' => 300, 'height' => 250],
+	'above' => ['width' => 728, 'height' => 90],
+	'below' => ['width' => 728, 'height' => 90],
+	'inline' => ['width' => 728, 'height' => 90],
+	'post_ad' => ['width' => 300, 'height' => 250],
+];
+
