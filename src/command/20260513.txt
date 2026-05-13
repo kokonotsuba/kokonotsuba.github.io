@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS country_flags (
+    id INT NOT NULL AUTO_INCREMENT,
+    post_uid INT NOT NULL,
+    country VARCHAR(8) NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_country_flag_post_uid (post_uid),
+    CONSTRAINT fk_country_flag_post_uid FOREIGN KEY (post_uid) REFERENCES posts(post_uid) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS display_ip (
+    id INT NOT NULL AUTO_INCREMENT,
+    post_uid INT NOT NULL,
+    ip_part VARCHAR(512) NOT NULL DEFAULT '',
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_display_ip_post_uid (post_uid),
+    CONSTRAINT fk_display_ip_post_uid FOREIGN KEY (post_uid) REFERENCES posts(post_uid) ON DELETE CASCADE
+) ENGINE=InnoDB;
