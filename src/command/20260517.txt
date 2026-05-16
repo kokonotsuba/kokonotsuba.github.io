@@ -1,0 +1,1 @@
+ALTER TABLE posts MODIFY host VARCHAR(45) NOT NULL, ADD INDEX idx_host (host);
