@@ -1,0 +1,3 @@
+ALTER TABLE `posts`
+    ADD INDEX `idx_tripcode` (`tripcode`(10)),
+    ADD INDEX `idx_secure_tripcode` (`secure_tripcode`(10));
