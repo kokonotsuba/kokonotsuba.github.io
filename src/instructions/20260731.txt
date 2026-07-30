@@ -1,0 +1,75 @@
+-- run these queries in mariadb
+CREATE TABLE IF NOT EXISTS board_configs (
+    `board_uid`   INT  NOT NULL,
+    `conf_values` JSON NOT NULL,
+    PRIMARY KEY (`board_uid`),
+    UNIQUE KEY uq_board_config_board_uid (`board_uid`),
+    CONSTRAINT fk_board_config_board_uid
+        FOREIGN KEY (`board_uid`) REFERENCES `boards`(`board_uid`) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+ALTER TABLE `boards`
+    ADD COLUMN `subdomain` VARCHAR(253) NOT NULL DEFAULT '' AFTER `storage_directory_name`;
+
+ALTER TABLE `posts` DROP INDEX idx_posts_thread_rank_cover;
+
+ALTER TABLE deleted_posts
+  ADD INDEX idx_dp_open_proxy (open_flag, by_proxy, post_uid, id),
+  ADD INDEX idx_dp_prune (open_flag, file_only, deleted_at);
+
+-- report system
+
+CREATE TABLE IF NOT EXISTS reports (
+    report_id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    post_uid INT NOT NULL,
+    board_uid INT NOT NULL,
+    reporter_ip VARCHAR(255) NOT NULL,
+    reporter_reason TEXT NULL,
+    date_reported DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+
+    -- 0 = pending, 1 = approved (post deleted), 2 = dismissed
+    status TINYINT NOT NULL DEFAULT 0,
+    actioned_by INT NULL,
+    actioned_at DATETIME NULL,
+
+    -- public_reason is shown to the reporter, private_reason only to staff
+    public_reason TEXT NULL,
+    private_reason TEXT NULL,
+
+    INDEX idx_reports_status_date (status, date_reported),
+    INDEX idx_reports_post_uid (post_uid),
+    INDEX idx_reports_board_uid (board_uid),
+    INDEX idx_reports_reporter_ip (reporter_ip),
+    INDEX idx_reports_date_reported (date_reported),
+    INDEX idx_reports_actioned_by (actioned_by),
+
+    CONSTRAINT fk_reports_post_uid FOREIGN KEY (post_uid) REFERENCES `posts`(post_uid) ON DELETE CASCADE,
+    CONSTRAINT fk_reports_board_uid FOREIGN KEY (board_uid) REFERENCES `boards`(board_uid) ON DELETE CASCADE,
+    CONSTRAINT fk_reports_actioned_by FOREIGN KEY (actioned_by) REFERENCES `accounts`(id) ON DELETE SET NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS report_reads (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    report_id BIGINT UNSIGNED NOT NULL,
+    account_id INT NOT NULL,
+    date_read DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+
+    UNIQUE KEY uniq_report_read (report_id, account_id),
+    INDEX idx_report_reads_account (account_id),
+
+    CONSTRAINT fk_report_reads_report_id FOREIGN KEY (report_id) REFERENCES `reports`(report_id) ON DELETE CASCADE,
+    CONSTRAINT fk_report_reads_account_id FOREIGN KEY (account_id) REFERENCES `accounts`(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+
+
+##############################################
+# Then in the terminal (replace paths with where your instance's global dir is), run 
+# dry-run first — writes nothing, shows what it would migrate
+php Utilities/migrateBoardConfigs-cli.php --legacy=/path/to/install/global --dry-run --verbose
+
+# then for real
+php Utilities/migrateBoardConfigs-cli.php --legacy=/path/to/install/global
+
+-- now you can run this query in mariadb
+ALTER TABLE `boards` DROP COLUMN `config_name`;
