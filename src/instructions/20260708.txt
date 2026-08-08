@@ -1,0 +1,5 @@
+# do a dry-run first to check for any errors in the output
+php Utilities/migrateRoleLevels-cli.php --dry-run
+
+# now perform the migration of old role level values to new ones
+php Utilities/migrateRoleLevels-cli.php
