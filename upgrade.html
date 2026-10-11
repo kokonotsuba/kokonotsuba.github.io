@@ -35,8 +35,9 @@
     <div class="centerText">
       <img class="randomImage" height="400" src="https://img.heyuri.net/c/randomimg2.php" alt="Random image from 2D Cute@Heyuri" title="Random image from 2D Cute@Heyuri">
     </div>
-
-    <h2>SQL Commands</h2>
+    <p>To update Kokonotsuba do the following:</p> <ul><li>1. update all code files by running <code>git pull</code></li>, <li>2. Do a dry-run (won't apply anything) to check for errors <code>php Utilities/migrate-cli.php up --dry-run</code></li> <li>3. If there weren't any errors with the previous step - now you can perform the actual upgrade with <code>php Utilities/migrate-cli.php up</code></li></ul>
+    <h2>Below are legacy commands for older versions of kokonotsuba - use the migrator if you installed Kokonotsuba after 2026/08/15</h2>
+    <h3>SQL Commands</h3>
     <p>As Kokonotsuba is updated, the structure of the database may change. To adapt, run these commands starting from the date of your last upgrade to the latest version:</p>
     <p>2025/08/24<br><code>ALTER TABLE threads ADD COLUMN is_sticky BOOL DEFAULT FALSE;</code></p>
     <p>2025/08/27<br><code>ALTER TABLE posts ADD COLUMN poster_hash VARCHAR(255) DEFAULT NULL;</code></p>
