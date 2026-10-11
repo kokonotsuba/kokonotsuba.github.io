@@ -36,8 +36,8 @@
       <img class="randomImage" height="400" src="https://img.heyuri.net/c/randomimg2.php" alt="Random image from 2D Cute@Heyuri" title="Random image from 2D Cute@Heyuri">
     </div>
     <p>To update Kokonotsuba do the following:</p> <ul><li>1. update all code files by running <code>git pull</code></li>, <li>2. Do a dry-run (won't apply anything) to check for errors <code>php Utilities/migrate-cli.php up --dry-run</code></li> <li>3. If there weren't any errors with the previous step - now you can perform the actual upgrade with <code>php Utilities/migrate-cli.php up</code></li></ul>
-    <h2>Below are legacy commands for older versions of kokonotsuba - use the migrator if you installed Kokonotsuba after 2026/08/15</h2>
-    <h3>SQL Commands</h3>
+    <h3>Below are legacy commands for older versions of kokonotsuba - use the migrator if you installed Kokonotsuba after 2026/08/15</h3>
+    <h4>SQL Commands</h4>
     <p>As Kokonotsuba is updated, the structure of the database may change. To adapt, run these commands starting from the date of your last upgrade to the latest version:</p>
     <p>2025/08/24<br><code>ALTER TABLE threads ADD COLUMN is_sticky BOOL DEFAULT FALSE;</code></p>
     <p>2025/08/27<br><code>ALTER TABLE posts ADD COLUMN poster_hash VARCHAR(255) DEFAULT NULL;</code></p>
@@ -62,7 +62,7 @@
     <p>2026/05/13<br><a href="src/command/20260513.txt">Country flag and display ip moved to tables</a></p>
     <p>2026/05/17<br><a href="src/command/20260517.txt">Add index to host column to speed up searches on it</a></p>
     <p>2026/08/07<br><a href="src/command/20260807.txt">Add another post root index to speed up stat generation.</a></p>
-    <h2>Refactors</h2>
+    <h4>Refactors</h4>
     <p>Occasionally, there are large changes to the code and some may require further instruction to successfully update. Particularly if it involves altering configurations.</p>
     <p>2026/02/13<br><a href="src/instructions/20260213.txt">Update namespaces in configuration.</a></p>
     <p>2026/04/12<br><a href="src/instructions/20260412.txt">Backend/database rework and new features.</a></p>
